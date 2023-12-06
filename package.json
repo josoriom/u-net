@@ -1,0 +1,33 @@
+{
+  "name": "mobilnet",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "": "",
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "eslint": "eslint src --cache",
+    "eslint-fix": "npm run eslint -- --fix",
+    "prettier": "prettier --check src",
+    "prettier-write": "prettier --write src",
+    "test-only": "vitest run --globals --coverage",
+    "test": "npm run test-only && npm run eslint && npm run prettier && npm run check-types",
+    "train": "npx ts-node-esm src/scripts/train.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@tensorflow/tfjs-node": "^4.14.0",
+    "filelist-utils": "^1.10.2",
+    "ml-spectra-processing": "^12.8.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.55.0",
+    "eslint-config-cheminfo-typescript": "^12.1.0",
+    "prettier": "^3.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.3"
+  }
+}

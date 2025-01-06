@@ -16,7 +16,7 @@ export async function getTrainData(
   const xSize = width * height * channels;
   const ySize = width * height * 1;
 
-  const itemsLength = 2; //xCollection.files.length;
+  const itemsLength = x.files.length;
   const datasets = getIndices(itemsLength);
   const images = datasets.map((item) => new Float32Array(item.length * xSize));
   const labels = datasets.map((item) => new Float32Array(item.length * ySize));

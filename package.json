@@ -20,7 +20,7 @@
   "dependencies": {
     "@tensorflow/tfjs-node": "^4.22.0",
     "filelist-utils": "^1.11.2",
-    "image-js": "^0.36.0",
+    "image-js": "0.0.0-next-692b15513a",
     "ml-spectra-processing": "^14.9.1"
   },
   "devDependencies": {

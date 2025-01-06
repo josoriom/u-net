@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
 
-import { Tensor, loadLayersModel, tensor4d } from '@tensorflow/tfjs-node-node';
+import { Tensor, loadLayersModel, tensor4d } from '@tensorflow/tfjs-node';
 import { decode } from 'image-js';
 
 import { saveImage } from './utilities/saveImage';

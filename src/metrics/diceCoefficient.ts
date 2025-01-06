@@ -1,4 +1,4 @@
-import { Tensor, sum, scalar } from '@tensorflow/tfjs-node-node';
+import { Tensor, sum, scalar } from '@tensorflow/tfjs-node';
 
 export function diceCoefficient(yTrue: Tensor, yPred: Tensor): Tensor {
   const intersection = sum(yTrue.mul(yPred)).cast('float32');

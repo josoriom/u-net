@@ -1,6 +1,6 @@
 // Import TensorFlow.js
 import * as tf from '@tensorflow/tfjs-node';
-import { SymbolicTensor } from '@tensorflow/tfjs-node-node';
+import { SymbolicTensor } from '@tensorflow/tfjs-node';
 
 // Define the U-Net model
 function createUNet(inputShape) {

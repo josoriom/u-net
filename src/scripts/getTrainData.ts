@@ -1,5 +1,5 @@
 /* eslint-disable no-await-in-loop */
-import { tensor4d } from '@tensorflow/tfjs-node-node';
+import { tensor4d } from '@tensorflow/tfjs-node';
 import { FileCollection } from 'filelist-utils';
 import { ImageColorModel, decode } from 'image-js';
 

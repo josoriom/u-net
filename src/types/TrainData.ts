@@ -1,4 +1,4 @@
-import { Tensor4D } from '@tensorflow/tfjs-node-node';
+import { Tensor4D } from '@tensorflow/tfjs-node';
 
 export interface TrainingData {
   training: {

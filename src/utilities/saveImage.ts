@@ -1,6 +1,6 @@
 import { writeFileSync } from 'fs';
 
-import { Tensor } from '@tensorflow/tfjs-node-node';
+import { Tensor } from '@tensorflow/tfjs-node';
 import { encode, Image, ImageColorModel } from 'image-js';
 
 export function saveImage(tensor: Tensor, kind: string, size) {

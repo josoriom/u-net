@@ -15,7 +15,7 @@ const x = await fileCollectionFromPath(new URL('x', dataFolder).pathname);
 const y = await fileCollectionFromPath(new URL('y', dataFolder).pathname);
 const data = await getTrainData(x, y);
 
-await trainModel(model, data, { epochs, learningRate });
+await trainModel(model, { ...data, batchSize: 32 }, { epochs, learningRate });
 
 // eslint-disable-next-line no-console
 console.log(`:::::::::: Saving the model :::::::::::`);

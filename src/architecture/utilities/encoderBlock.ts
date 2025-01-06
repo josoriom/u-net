@@ -1,4 +1,4 @@
-import { SymbolicTensor, layers } from '@tensorflow/tfjs-node';
+import { SymbolicTensor, layers } from '@tensorflow/tfjs-node-node';
 
 export function encoderBlock(inputs: SymbolicTensor, filters: number) {
   let encoder = layers

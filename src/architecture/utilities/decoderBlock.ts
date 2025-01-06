@@ -1,4 +1,4 @@
-import { SymbolicTensor, layers } from '@tensorflow/tfjs-node';
+import { SymbolicTensor, layers } from '@tensorflow/tfjs-node-node';
 
 export function decoderBlock(
   inputs: SymbolicTensor,

@@ -18,17 +18,16 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.14.0",
-    "filelist-utils": "^1.10.2",
-    "image-js": "^0.0.0-next-646dc2b006",
-    "ml-spectra-processing": "^12.8.0"
+    "@tensorflow/tfjs-node": "^4.22.0",
+    "filelist-utils": "^1.11.2",
+    "image-js": "^0.36.0",
+    "ml-spectra-processing": "^14.9.1"
   },
   "devDependencies": {
-    "eslint": "^8.55.0",
-    "eslint-config-cheminfo-typescript": "^12.1.0",
-    "prettier": "^3.1.0",
-    "ts-node": "^10.9.1",
-    "tsx": "^4.7.2",
-    "typescript": "^5.3.3"
+    "eslint": "^9.17.0",
+    "eslint-config-cheminfo-typescript": "^17.0.0",
+    "prettier": "^3.4.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   }
 }

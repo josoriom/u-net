@@ -25,12 +25,11 @@ export function encoderBlock(inputs: SymbolicTensor, filters: number) {
   encoder = layers
     .activation({ activation: 'relu' })
     .apply(encoder) as SymbolicTensor;
-  const skip = encoder;
   encoder = layers
     .maxPooling2d({
       poolSize: [2, 2],
       strides: [2, 2],
     })
     .apply(encoder) as SymbolicTensor;
-  return { encoder, skip };
+  return encoder;
 }

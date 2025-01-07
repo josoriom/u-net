@@ -1,11 +1,12 @@
-import { SymbolicTensor, layers } from '@tensorflow/tfjs-node';
+import { SymbolicTensor, layers, Tensor4D, input } from '@tensorflow/tfjs-node';
+import { ResizeSymbolicTensor } from './ResizeSymbolicTensor';
 
 export function decoderBlock(
   inputs: SymbolicTensor,
   skip: SymbolicTensor,
   filters: number,
 ) {
-  let dencoder = layers
+  let decoder = layers
     .conv2dTranspose({
       filters,
       kernelSize: 2,
@@ -14,32 +15,44 @@ export function decoderBlock(
       padding: 'same',
     })
     .apply(inputs) as SymbolicTensor;
-  dencoder = layers
+  const outH = decoder.shape[1]!;
+  const outW = decoder.shape[2]!;
+
+  const resizedSkip = new ResizeSymbolicTensor(outH, outW).apply(
+    skip,
+  ) as SymbolicTensor;
+  console.log({
+    inputs: inputs.shape,
+    decoder: decoder.shape,
+    skip: skip.shape,
+    resized: resizedSkip.shape,
+  });
+  decoder = layers
     .concatenate({ axis: 3 })
-    .apply([dencoder, skip]) as SymbolicTensor;
-  dencoder = layers
+    .apply([decoder, resizedSkip]) as SymbolicTensor;
+  decoder = layers
     .conv2d({
       filters,
       kernelSize: 3,
       activation: 'relu',
       padding: 'same',
     })
-    .apply(dencoder) as SymbolicTensor;
-  dencoder = layers.batchNormalization().apply(dencoder) as SymbolicTensor;
-  dencoder = layers
+    .apply(decoder) as SymbolicTensor;
+  decoder = layers.batchNormalization().apply(decoder) as SymbolicTensor;
+  decoder = layers
     .activation({ activation: 'relu' })
-    .apply(dencoder) as SymbolicTensor;
-  dencoder = layers
+    .apply(decoder) as SymbolicTensor;
+  decoder = layers
     .conv2d({
       filters,
       kernelSize: 3,
       activation: 'relu',
       padding: 'same',
     })
-    .apply(dencoder) as SymbolicTensor;
-  dencoder = layers.batchNormalization().apply(dencoder) as SymbolicTensor;
-  dencoder = layers
+    .apply(decoder) as SymbolicTensor;
+  decoder = layers.batchNormalization().apply(decoder) as SymbolicTensor;
+  decoder = layers
     .activation({ activation: 'relu' })
-    .apply(dencoder) as SymbolicTensor;
-  return dencoder;
+    .apply(decoder) as SymbolicTensor;
+  return decoder;
 }

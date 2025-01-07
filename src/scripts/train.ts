@@ -6,7 +6,7 @@ import { getTrainData } from './getTrainData.js';
 import { trainModel } from './trainModel.js';
 
 const size = 256;
-const epochs = 50;
+const epochs = 2;
 const learningRate = 0.001;
 
 const model = unetModel([size, size, 3], 1);

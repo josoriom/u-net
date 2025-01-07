@@ -1,11 +1,19 @@
 import { readFileSync } from 'fs';
 
-import { Tensor, loadLayersModel, tensor4d } from '@tensorflow/tfjs-node';
+import {
+  Tensor,
+  loadLayersModel,
+  tensor4d,
+  serialization,
+} from '@tensorflow/tfjs-node';
 import { decode } from 'image-js';
 
 import { saveImage } from './utilities/saveImage';
+import { ResizeSymbolicTensor } from './architecture/utilities/ResizeSymbolicTensor';
 
-const modelPath = new URL('./new_256_50/model.json', import.meta.url);
+serialization.registerClass(ResizeSymbolicTensor);
+
+const modelPath = new URL('./model_10/model.json', import.meta.url);
 const size = 256;
 const model = await loadLayersModel(modelPath.href);
 const image = decode(

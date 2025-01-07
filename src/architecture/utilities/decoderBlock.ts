@@ -1,4 +1,4 @@
-import { SymbolicTensor, layers, Tensor4D, input } from '@tensorflow/tfjs-node';
+import { SymbolicTensor, layers } from '@tensorflow/tfjs-node';
 import { ResizeSymbolicTensor } from './ResizeSymbolicTensor';
 
 export function decoderBlock(
@@ -15,40 +15,22 @@ export function decoderBlock(
       padding: 'same',
     })
     .apply(inputs) as SymbolicTensor;
-  const outH = decoder.shape[1]!;
-  const outW = decoder.shape[2]!;
-
-  const resizedSkip = new ResizeSymbolicTensor(outH, outW).apply(
-    skip,
-  ) as SymbolicTensor;
-  console.log({
-    inputs: inputs.shape,
-    decoder: decoder.shape,
-    skip: skip.shape,
-    resized: resizedSkip.shape,
-  });
+  const resizedSkip = new ResizeSymbolicTensor(
+    decoder.shape[1],
+    decoder.shape[2],
+  ).apply(skip) as SymbolicTensor;
   decoder = layers
     .concatenate({ axis: 3 })
     .apply([decoder, resizedSkip]) as SymbolicTensor;
   decoder = layers
-    .conv2d({
-      filters,
-      kernelSize: 3,
-      activation: 'relu',
-      padding: 'same',
-    })
+    .conv2d({ filters, kernelSize: 3, activation: 'relu', padding: 'same' })
     .apply(decoder) as SymbolicTensor;
   decoder = layers.batchNormalization().apply(decoder) as SymbolicTensor;
   decoder = layers
     .activation({ activation: 'relu' })
     .apply(decoder) as SymbolicTensor;
   decoder = layers
-    .conv2d({
-      filters,
-      kernelSize: 3,
-      activation: 'relu',
-      padding: 'same',
-    })
+    .conv2d({ filters, kernelSize: 3, activation: 'relu', padding: 'same' })
     .apply(decoder) as SymbolicTensor;
   decoder = layers.batchNormalization().apply(decoder) as SymbolicTensor;
   decoder = layers

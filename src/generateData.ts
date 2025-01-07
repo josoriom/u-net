@@ -5,7 +5,7 @@ import { Image, encode } from 'image-js';
 import { randomColors } from './utilities/randomColors.js';
 
 const size = 256;
-const samples = 50;
+const samples = 2;
 const objects = 20;
 const radius = 15;
 for (let j = 0; j < samples; j++) {
